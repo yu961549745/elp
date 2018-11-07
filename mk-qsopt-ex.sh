@@ -5,3 +5,5 @@ mkdir build
 cd build
 ../configure
 make install
+cd ../../
+ln -s ./qsopt-ex/build/esolver/.libs/esolver esolver.run

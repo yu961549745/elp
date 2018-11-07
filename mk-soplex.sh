@@ -5,3 +5,5 @@ mkdir build
 cd build
 cmake ..
 make
+cd ../../
+ln -s ./soplex/build/bin/soplex soplex.run

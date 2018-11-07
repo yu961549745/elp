@@ -1,2 +1,5 @@
 /soplex
 /qsopt-ex
+*.pdf
+*.run
+*.sol
