@@ -1,0 +1,1 @@
+./qsopt-ex.run -O res.sol -L ./LPS/test-qsopt.lp

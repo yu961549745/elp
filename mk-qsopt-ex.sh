@@ -6,4 +6,4 @@ cd build
 ../configure
 make install
 cd ../../
-ln -s ./qsopt-ex/build/esolver/.libs/esolver esolver.run
+ln -s ./qsopt-ex/build/esolver/.libs/esolver qsopt-ex.run

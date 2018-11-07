@@ -1,1 +1,0 @@
-./esolver.run -O res.sol -L test-qsopt.lp

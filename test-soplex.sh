@@ -1,1 +1,0 @@
-./soplex.run --solvemode=2 -X test-soplex.lp
