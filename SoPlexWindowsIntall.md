@@ -8,6 +8,12 @@
 5. 将`soplex.cpp`中`mpir_version`替换为`__MPIR_VERSION`, 这到底是谁写的不标准.
 6. 生成 -> 生成解决方案
 
+简化后步骤:
+1. msys2 中打开
+2. `sh mk-soplex-win.sh`
+3. 进入`soplex/build`双击运行bat文件
+4. 在VS中切换为Release生成解决方案
+
 # 后记
 在 windows 上编译 UNIX 软件有以下几种选择:
 + Cygwin -- 安装包太难用了, 滚
@@ -51,7 +57,7 @@ MSYS2 是对  Cygwin 和 MinGW+MSYS 的升级实现, 包管理非常舒服, 只�
 凸(艹皿艹 )!!!! GMP居然官网有预编译版, 操. [地址](https://cs.nyu.edu/~exact/core/gmp/index.html)
 
 # Cross Compiling on Linux
-安装  mingw-w64 之后, 创建 `mingw.cmake`
+Linux上, 安装  mingw-w64 之后, 创建 `mingw.cmake`
 ```
 # the name of the target operating system
 SET(CMAKE_SYSTEM_NAME Windows)
@@ -76,3 +82,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 cmake .. -DCMAKE_TOOLCHAIN_FILE=mingw.cmake
 ```
 问题就是`mingw-g++` multiple definition 
+```
+cmake .. -DCMAKE_EXE_LINKER_FLAGS="-Wl,-static,--allow-multiple-definition"
+```
+解决了这个问题, 但是在 Linux 上找不到库, 在 msys2 上最终搞不定 soplex::infinity
