@@ -1,0 +1,1 @@
+.\soplex.exe -X --solvemode=2 .\test-soplex.lp
