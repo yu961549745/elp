@@ -50,3 +50,29 @@ MSYS2 是对  Cygwin 和 MinGW+MSYS 的升级实现, 包管理非常舒服, 只�
 # 再后记
 凸(艹皿艹 )!!!! GMP居然官网有预编译版, 操. [地址](https://cs.nyu.edu/~exact/core/gmp/index.html)
 
+# Cross Compiling on Linux
+安装  mingw-w64 之后, 创建 `mingw.cmake`
+```
+# the name of the target operating system
+SET(CMAKE_SYSTEM_NAME Windows)
+
+# which compilers to use for C and C++
+SET(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
+SET(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
+SET(CMAKE_RC_COMPILER x86_64-w64-mingw32-windres)
+
+# here is the target environment located
+SET(CMAKE_FIND_ROOT_PATH x86_64-w64-mingw32)
+
+# adjust the default behaviour of the FIND_XXX() commands:
+# search headers and libraries in the target environment, search
+# programs in the host environment
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+```
+然后
+```
+cmake .. -DCMAKE_TOOLCHAIN_FILE=mingw.cmake
+```
+问题就是`mingw-g++` multiple definition 
